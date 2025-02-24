@@ -134,14 +134,23 @@ def predict_price(sample_input):
     print("\n 🏡 Predicted House Price:", predicted_price)
     return predicted_price
 
-# Example Prediction
-sample_input = {
-    "price_per_sqft": 40000,
-    "area": 1200,
-    "bedRoom": 3,
-    "bathroom": 2,
-    "floorNum": 2,
-    "property_type": "Apartment",
-    "society": "A"
-}
-predict_price(sample_input)
+# -------------------- 🏡 Dynamic House Price Prediction --------------------
+def get_user_input():
+    sample_input = {}
+
+    # Get numerical inputs
+    sample_input["price_per_sqft"] = float(input("Enter price per sqft: "))
+    sample_input["area"] = float(input("Enter area (sqft): "))
+    sample_input["bedRoom"] = int(input("Enter number of bedrooms: "))
+    sample_input["bathroom"] = int(input("Enter number of bathrooms: "))
+    sample_input["floorNum"] = int(input("Enter floor number: "))
+
+    # Get categorical inputs
+    sample_input["property_type"] = input("Enter property type (e.g., Apartment, Villa): ").strip()
+    sample_input["society"] = input("Enter society name: ").strip()
+
+    return sample_input
+
+# Get user input dynamically
+user_input = get_user_input()
+predict_price(user_input)
